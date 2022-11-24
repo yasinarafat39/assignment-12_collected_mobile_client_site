@@ -4,6 +4,7 @@ import toast from 'react-hot-toast';
 import { FaFacebook, FaGoogle } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
+import SocialLogin from '../../../utilites/SocialLogin/SocialLogin';
 
 const SignUp = () => {
 
@@ -24,7 +25,7 @@ const SignUp = () => {
                 // update user profile 
                 const profile = {
                     displayName: data.fullName,
-                    
+
                 }
                 updateUser(profile)
                     .then(() => { toast.success('Sign Up Success') })
@@ -96,15 +97,7 @@ const SignUp = () => {
 
                         <div className="divider"><small>OR</small></div>
 
-                        <div className="flex justify-center space-x-4">
-                            <button aria-label="Log in with Google" className="p-3 rounded-sm">
-                                <FaGoogle className='text-3xl '></FaGoogle>
-                            </button>
-                            <button aria-label="Log in with Facebook" className="p-3 rounded-sm">
-                                <FaFacebook className='text-3xl '></FaFacebook>
-                            </button>
-
-                        </div>
+                        <SocialLogin></SocialLogin>
                     </div>
                 </div>
             </div>

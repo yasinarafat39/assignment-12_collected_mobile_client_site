@@ -1,16 +1,20 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
+import SocialLogin from '../../../utilites/SocialLogin/SocialLogin';
 
 const SignIn = () => {
 
 
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [signInError, setSignInError] = useState('');
-
+    const {} = useContext(AuthContext);
 
     const handleSignIn = data => {
         console.log(data);
+
+
     }
 
     return (
@@ -19,6 +23,9 @@ const SignIn = () => {
                 <img src="https://placeimg.com/260/400/arch" className="max-w-sm rounded-lg shadow-2xl" />
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                     <div className="card-body">
+
+                        <h3 className='text-center text-2xl font-semibold'>Sign In</h3>
+
                         <form onSubmit={handleSubmit(handleSignIn)}>
                             <div className="form-control">
                                 <label className="label" htmlFor='email'>
@@ -32,9 +39,11 @@ const SignIn = () => {
                                     <span className="label-text">Password</span>
                                 </label>
                                 <input {...register("password", { required: "Password is required" })} type="password" placeholder="password" className="input input-bordered" />
+                                <label className="label">
+                                    <span onClick="" className="label-text-alt link link-hover cursor-pointer">Forgot password?</span>
+                                </label>
                                 {errors.password && <small className='text-red-400'>{errors.password.message}</small>}
                             </div>
-
                             {signInError && <small className='text-red-600'>{signInError}</small>}
                             <div className="form-control mt-6">
                                 <button className="btn btn-primary">Sign In</button>
@@ -45,6 +54,7 @@ const SignIn = () => {
                         </p>
 
                         <div className="divider"><small>OR</small></div>
+                        <SocialLogin></SocialLogin>
                     </div>
                 </div>
             </div>
