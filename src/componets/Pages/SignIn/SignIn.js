@@ -7,9 +7,10 @@ import SocialLogin from '../../../utilites/SocialLogin/SocialLogin';
 
 const SignIn = () => {
 
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, getValues, handleSubmit, formState: { errors } } = useForm();
+
     const [signInError, setSignInError] = useState('');
-    const { userSignIn } = useContext(AuthContext);
+    const { userSignIn, handleForgetPassword } = useContext(AuthContext);
 
     const handleSignIn = data => {
         console.log(data);
@@ -23,6 +24,22 @@ const SignIn = () => {
             .catch(error => {
                 setSignInError(error.message);
                 console.error(error);
+            })
+    }
+
+
+    // Reset Password
+    const handlePasswordReset = () => {
+
+        const email = getValues('email');
+        console.log(email);
+
+        handleForgetPassword(email)
+            .then(() => {
+                toast.success('Password Reset Email send to your Email Address. Please Check.')
+            })
+            .catch(error => {
+                setSignInError(error.message);
             })
     }
 
@@ -49,7 +66,7 @@ const SignIn = () => {
                                 </label>
                                 <input {...register("password", { required: "Password is required" })} type="password" placeholder="password" className="input input-bordered" />
                                 <label className="label">
-                                    <span onClick="" className="label-text-alt link link-hover cursor-pointer">Forgot password?</span>
+                                    <span onClick={handlePasswordReset} className="label-text-alt link link-hover cursor-pointer">Forgot password?</span>
                                 </label>
                                 {errors.password && <small className='text-red-400'>{errors.password.message}</small>}
                             </div>
