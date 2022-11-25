@@ -2,6 +2,9 @@ import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../../../Contexts/AuthProvider/AuthProvider';
+import logo from '../../../../assets/logo/logo.png'
+
+
 
 const Navbar = () => {
     const { user, userLogOut } = useContext(AuthContext);
@@ -13,6 +16,7 @@ const Navbar = () => {
 
     </>
 
+    // User LogOut
     const handleUserLogOut = () => {
         userLogOut()
             .then(() => {
@@ -35,7 +39,9 @@ const Navbar = () => {
                             {menu}
                         </ul>
                     </div>
-                    <Link className="btn btn-ghost normal-case text-xl">Collected Mobile</Link>
+                    <Link className="btn btn-ghost normal-case text-xl">
+                        <img src={logo} alt="logo" className='w-[60px]' />
+                        Collected Mobile</Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal p-0">
@@ -46,6 +52,7 @@ const Navbar = () => {
                     {
                         user?.uid ?
                             <>
+                                <img title={user.displayName} src={user.photoURL} className="w-[60px] h-[60px] rounded-full mr-3" alt="user Profile" />
                                 <button onClick={handleUserLogOut} className="btn">Sign Out</button>
                             </>
                             :
