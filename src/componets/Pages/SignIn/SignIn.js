@@ -20,6 +20,7 @@ const SignIn = () => {
                 const user = userCredential.user;
                 console.log(user);
                 toast.success('LogIn Success!');
+                setSignInError('');
             })
             .catch(error => {
                 setSignInError(error.message);

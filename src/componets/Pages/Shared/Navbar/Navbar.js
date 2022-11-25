@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../../../Contexts/AuthProvider/AuthProvider';
 
 const Navbar = () => {
-    const { } = useContext(AuthContext);
+    const { user, userLogOut } = useContext(AuthContext);
 
     const menu = <>
         <li><NavLink to="/">Home</NavLink></li>
@@ -11,6 +12,16 @@ const Navbar = () => {
         <li><NavLink to="/blog">Blog</NavLink></li>
 
     </>
+
+    const handleUserLogOut = () => {
+        userLogOut()
+            .then(() => {
+                toast.success('LogOut Success')
+            })
+            .catch(error => {
+                console.error(error)
+            })
+    }
 
     return (
         <div>
@@ -32,8 +43,17 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <Link to="/signin" className="btn mr-2">Sign In</Link>
-                    <Link to="/signup" className="btn">Sign Up</Link>
+                    {
+                        user?.uid ?
+                            <>
+                                <button onClick={handleUserLogOut} className="btn">Sign Out</button>
+                            </>
+                            :
+                            <>
+                                <Link to="/signin" className="btn mr-2">Sign In</Link>
+                                <Link to="/signup" className="btn">Sign Up</Link>
+                            </>
+                    }
                 </div>
             </div>
         </div>
