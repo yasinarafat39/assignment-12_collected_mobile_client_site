@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
 import useTitle from '../../../hooks/useTitle';
 import SocialLogin from '../../../utilites/SocialLogin/SocialLogin';
@@ -12,6 +12,9 @@ const SignUp = () => {
     useTitle('SignUp')
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [signUpError, setSignUpError] = useState('');
+
+    const navigate = useNavigate();
+
 
     const handleSignUp = data => {
         console.log(data);
@@ -28,7 +31,10 @@ const SignUp = () => {
 
                 }
                 updateUser(profile)
-                    .then(() => { toast.success('Sign Up Success') })
+                    .then(() => {
+                        toast.success('Sign Up Success');
+                        navigate('/');
+                    })
                     .catch(error => {
                         console.error(error.message);
                     })
