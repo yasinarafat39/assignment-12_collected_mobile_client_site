@@ -8,7 +8,7 @@ const Banner = () => {
             <div className="hero-content text-center text-neutral-content">
                 <div className="max-w-md">
                     <h1 className="mb-5 text-5xl font-bold">Welcome to Collected Mobile.</h1>
-                    <p className="mb-5">This Market for Seller and Buyer who can Sell their used Mobile.</p>
+                    <p className="mb-5">This is Used Mobile Resale Market for Seller and Buyer who can Sell their used Mobile.</p>
                 </div>
             </div>
         </div>

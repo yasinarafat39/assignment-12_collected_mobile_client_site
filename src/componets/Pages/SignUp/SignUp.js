@@ -14,7 +14,7 @@ const SignUp = () => {
     const [signUpError, setSignUpError] = useState('');
 
     const handleSignUp = data => {
-        console.log(data.email, data.password, data.fullName);
+        console.log(data);
 
         setSignUpError('');
         createUser(data.email, data.password)
@@ -70,16 +70,23 @@ const SignUp = () => {
                                 <input {...register("password", { required: "Password is required" })} type="password" placeholder="password" className="input input-bordered" />
                                 {errors.password && <small className='text-red-400'>{errors.password.message}</small>}
                             </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Profile Photo</span>
+                                </label>
+                                <input {...register("profilePhoto", { required: "Profile Photo is required" })} type="file" className="" />
+                                {errors.profilePhoto && <small className='text-red-400'>{errors.profilePhoto.message}</small>}
+                            </div>
                             <div className='form-control'>
                                 <div className='flex justify-around mt-2'>
                                     <div className='flex justify-center items-center'>
-                                        <input type="radio" name="radio-1" id="buyer" className="radio mr-2" checked />
+                                        <input {...register("buyer")} type="radio" name="radio-1" id="buyer" className="radio mr-2" />
                                         <label htmlFor="buyer">
                                             <span className="label-text">As a buyer</span>
                                         </label>
                                     </div>
                                     <div className='flex justify-center items-center'>
-                                        <input type="radio" name="radio-1" id="seller" className="radio checked:bg-blue-500 mr-2 " />
+                                        <input {...register("seller")} type="radio" name="radio-1" id="seller" className="radio checked:bg-blue-500 mr-2 " />
                                         <label htmlFor="seller">
                                             <span className="label-text">As a seller</span>
                                         </label>

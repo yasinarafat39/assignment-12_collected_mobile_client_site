@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useRouteError } from 'react-router-dom';
+import errorImage from '../../../assets/errorPage.jpg';
 
 const ErrorPage = () => {
     const error = useRouteError();
@@ -13,6 +14,7 @@ const ErrorPage = () => {
                 <section className="flex items-center h-screen p-16 text-gray-800">
                     <div className="container flex flex-col items-center justify-center px-5 mx-auto my-8">
                         <div className="max-w-md text-center">
+                            <img src={errorImage} alt="error" />
                             <h2 className="mb-8 font-extrabold text-9xl text-gray-400">
                                 <span className="sr-only">Error</span>
                                 {error.status}
