@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 const Category = ({ category }) => {
 
     
+
     return (
         <div className='border rounded-xl '>
             <Link to="" className='hover:shadow-lg flex justify-center'>
