@@ -11,15 +11,31 @@ const SignUp = () => {
     const { createUser, updateUser } = useContext(AuthContext);
     useTitle('SignUp')
     const { register, getValues, handleSubmit, formState: { errors } } = useForm();
+    const imageHostKey = process.env.REACT_APP_imgbb_key;
     const [signUpError, setSignUpError] = useState('');
-
+    const [createdUserEmail, setCreatedUserEmail] = useState('')
     const navigate = useNavigate();
 
 
     const handleSignUp = data => {
         const roll = getValues('roll');
-        console.log(data);
 
+        const profilePhoto = data.profilePhoto[0];
+        const formData = new FormData();
+        formData.append('profilePhoto', profilePhoto)
+
+        const url = `https://api.imgbb.com/1/upload?expiration=600&key=${imageHostKey}`
+
+        fetch(url, {
+            method: "POST",
+            body: formData
+        })
+            .then(res => res.json())
+            .then(imgData => {
+                if (imgData.success) {
+                    console.log(imgData.data.url);
+                }
+            })
 
         setSignUpError('');
         createUser(data.email, data.password)
@@ -35,6 +51,7 @@ const SignUp = () => {
                 updateUser(profile)
                     .then(() => {
                         toast.success('Sign Up Success');
+                        saveUser(data.name, data.email, roll);
                         navigate('/');
                     })
                     .catch(error => {
@@ -51,6 +68,19 @@ const SignUp = () => {
 
     const saveUser = (name, email, roll) => {
 
+        const user = { name, email, roll }
+
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                setCreatedUserEmail(email)
+            })
     }
 
     return (
