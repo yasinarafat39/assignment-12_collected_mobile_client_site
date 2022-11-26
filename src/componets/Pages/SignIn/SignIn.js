@@ -3,12 +3,13 @@ import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
+import useTitle from '../../../hooks/useTitle';
 import SocialLogin from '../../../utilites/SocialLogin/SocialLogin';
 
 const SignIn = () => {
 
     const { register, getValues, handleSubmit, formState: { errors } } = useForm();
-
+    useTitle("SignIn")
     const [signInError, setSignInError] = useState('');
     const { userSignIn, handleForgetPassword } = useContext(AuthContext);
 
@@ -47,7 +48,7 @@ const SignIn = () => {
     return (
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col lg:flex-row">
-                
+
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                     <div className="card-body">
 

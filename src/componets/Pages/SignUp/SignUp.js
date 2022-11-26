@@ -4,12 +4,13 @@ import toast from 'react-hot-toast';
 import { FaFacebook, FaGoogle } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
+import useTitle from '../../../hooks/useTitle';
 import SocialLogin from '../../../utilites/SocialLogin/SocialLogin';
 
 const SignUp = () => {
 
     const { createUser, updateUser } = useContext(AuthContext);
-
+    useTitle('SignUp')
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [signUpError, setSignUpError] = useState('');
 
