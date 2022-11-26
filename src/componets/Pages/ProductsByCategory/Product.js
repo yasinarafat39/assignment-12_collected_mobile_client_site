@@ -4,7 +4,7 @@ const Product = ({ product }) => {
     const { _id, productName, brand, location, originalPrice, picture, resalePrice, yearsOfUsed } = product;
 
     return (
-        <div className="card w-96 bg-base-100 shadow-xl">
+        <div className="card bg-base-100 shadow-xl">
             <figure className="px-5 pt-5">
                 <img src="https://placeimg.com/400/225/arch" alt="Shoes" className="rounded-xl" />
             </figure>

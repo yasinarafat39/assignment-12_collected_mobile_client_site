@@ -10,14 +10,16 @@ const SignUp = () => {
 
     const { createUser, updateUser } = useContext(AuthContext);
     useTitle('SignUp')
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, getValues, handleSubmit, formState: { errors } } = useForm();
     const [signUpError, setSignUpError] = useState('');
 
     const navigate = useNavigate();
 
 
     const handleSignUp = data => {
+        const roll = getValues('roll');
         console.log(data);
+
 
         setSignUpError('');
         createUser(data.email, data.password)
@@ -43,6 +45,12 @@ const SignUp = () => {
                 console.error(error)
                 setSignUpError(error.message);
             })
+    }
+
+
+
+    const saveUser = (name, email, roll) => {
+
     }
 
     return (
@@ -73,7 +81,14 @@ const SignUp = () => {
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input {...register("password", { required: "Password is required" })} type="password" placeholder="password" className="input input-bordered" />
+                                <input {...register("password", {
+                                    required: "password is required",
+                                    pattern: {
+                                        value: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z])/,
+                                        message: "password must be one Uppercase letter, one special character letter, two number and tree lowercase letter"
+                                    },
+                                    minLength: { value: 8, message: "password must be 8 character or longer" }
+                                })} type="password" placeholder="password" className="input input-bordered" />
                                 {errors.password && <small className='text-red-400'>{errors.password.message}</small>}
                             </div>
                             <div className="form-control">
@@ -83,21 +98,18 @@ const SignUp = () => {
                                 <input {...register("profilePhoto", { required: "Profile Photo is required" })} type="file" className="" />
                                 {errors.profilePhoto && <small className='text-red-400'>{errors.profilePhoto.message}</small>}
                             </div>
-                            <div className='form-control'>
-                                <div className='flex justify-around mt-2'>
-                                    <div className='flex justify-center items-center'>
-                                        <input {...register("buyer")} type="radio" name="radio-1" id="buyer" className="radio mr-2" />
-                                        <label htmlFor="buyer">
-                                            <span className="label-text">As a buyer</span>
-                                        </label>
-                                    </div>
-                                    <div className='flex justify-center items-center'>
-                                        <input {...register("seller")} type="radio" name="radio-1" id="seller" className="radio checked:bg-blue-500 mr-2 " />
-                                        <label htmlFor="seller">
-                                            <span className="label-text">As a seller</span>
-                                        </label>
-                                    </div>
+                            <div className="form-control mb-4">
+
+                                <div className='flex justify-between mt-5'>
+                                    <label className="label"><span className="label-text text-xl font-semibold mr-4">I would like to:</span></label>
+                                    <select
+                                        {...register("roll")}
+                                        className="select select-bordered lg:w-[160px] md:w-[160px] w-[130px]">
+                                        <option selected >User</option>
+                                        <option>Seller</option>
+                                    </select>
                                 </div>
+
                             </div>
                             {signUpError && <small className='text-red-600'>{signUpError}</small>}
                             <div className="form-control mt-6">
