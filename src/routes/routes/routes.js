@@ -4,7 +4,7 @@ import Home from "../../componets/Pages/Home/Home";
 import Main from "../../Layout/Main/Main";
 import SignIn from "../../componets/Pages/SignIn/SignIn"
 import SignUp from "../../componets/Pages/SignUp/SignUp"
-import ProductsByCategory from "../../componets/Pages/productsByCategory/productsByCategory";
+import ProductsByCategory from "../../componets/Pages/ProductsByCategory/ProductsByCategory";
 
 export const router = createBrowserRouter([
     {
@@ -26,7 +26,8 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/category/:id',
-                element: <ProductsByCategory></ProductsByCategory>
+                element: <ProductsByCategory></ProductsByCategory>,
+                loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`)
             }
         ]
     }
