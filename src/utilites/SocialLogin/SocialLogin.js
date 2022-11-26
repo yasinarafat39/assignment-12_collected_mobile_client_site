@@ -1,35 +1,64 @@
 import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { FaFacebook, FaGoogle } from 'react-icons/fa';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 
 const SocialLogin = () => {
     const { googleLogin, facebookLogin } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
+    const roll = 'User';
 
 
+    // Google Login system
     const handleGoogleLogin = () => {
         googleLogin()
             .then(userCredential => {
                 const user = userCredential.user;
                 console.log(user);
-                toast.success("Login Success")
+                saveUser(user.displayName, user.email, roll);
+                toast.success("Login Success");
+                navigate(from, { replace: true });
             })
             .catch(error => {
                 console.error(error)
             })
     }
 
+    // Facebook Login system
     const handleFacebookLogin = () => {
         facebookLogin()
             .then(userCredential => {
                 const user = userCredential.user;
                 console.log(user);
-                toast.success('Login Success')
+                saveUser(user.displayName, user.email, roll);
+                toast.success('Login Success');
+                navigate(from, { replace: true });
             })
             .catch(error => {
                 console.error(error);
             })
     }
+
+    const saveUser = (name, email, roll) => {
+
+        const user = { name, email, roll }
+
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+
+            })
+    }
+
     return (
         <div className="flex justify-center space-x-4">
             <button onClick={handleGoogleLogin} aria-label="Log in with Google" className="p-3 rounded-sm">
