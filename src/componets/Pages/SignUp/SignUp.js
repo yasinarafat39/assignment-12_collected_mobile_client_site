@@ -13,7 +13,9 @@ const SignUp = () => {
     const { register, getValues, handleSubmit, formState: { errors } } = useForm();
     const imageHostKey = process.env.REACT_APP_imgbb_key;
     const [signUpError, setSignUpError] = useState('');
-    const [createdUserEmail, setCreatedUserEmail] = useState('')
+    const [createdUserEmail, setCreatedUserEmail] = useState('');
+    const [imgUrl, setImgUrl] = useState('');
+    console.log(imgUrl);
     const navigate = useNavigate();
 
 
@@ -22,20 +24,10 @@ const SignUp = () => {
 
         const profilePhoto = data.profilePhoto[0];
         const formData = new FormData();
-        formData.append('profilePhoto', profilePhoto)
+        formData.append('image', profilePhoto)
 
-        const url = `https://api.imgbb.com/1/upload?expiration=600&key=${imageHostKey}`
+        const url = `https://api.imgbb.com/1/upload?key=${imageHostKey}`
 
-        fetch(url, {
-            method: "POST",
-            body: formData
-        })
-            .then(res => res.json())
-            .then(imgData => {
-                if (imgData.success) {
-                    console.log(imgData.data.url);
-                }
-            })
 
         setSignUpError('');
         createUser(data.email, data.password)
@@ -48,15 +40,29 @@ const SignUp = () => {
                     displayName: data.fullName,
 
                 }
-                updateUser(profile)
-                    .then(() => {
-                        toast.success('Sign Up Success');
-                        saveUser(data.name, data.email, roll);
-                        navigate('/');
+
+                fetch(url, {
+                    method: "POST",
+                    body: formData
+                })
+                    .then(res => res.json())
+                    .then(imgData => {
+                        if (imgData.success) {
+                            profile.photoURL = imgData.data.url;
+                            updateUser(profile)
+                                .then(() => {
+                                    toast.success('Sign Up Success');
+                                    saveUser(data.fullName, data.email, roll);
+                                    navigate('/');
+                                })
+                                .catch(error => {
+                                    console.error(error.message);
+                                })
+                        }
                     })
-                    .catch(error => {
-                        console.error(error.message);
-                    })
+
+
+
             })
             .catch(error => {
                 console.error(error)
@@ -135,8 +141,8 @@ const SignUp = () => {
                                     <select
                                         {...register("roll")}
                                         className="select select-bordered lg:w-[160px] md:w-[160px] w-[130px]">
-                                        <option selected >User</option>
-                                        <option>Seller</option>
+                                        <option selected defaultValue={'User'} >User</option>
+                                        <option defaultValue={'Seller'} >Seller</option>
                                     </select>
                                 </div>
 
