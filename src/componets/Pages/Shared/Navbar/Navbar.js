@@ -37,29 +37,44 @@ const Navbar = () => {
                         </label>
                         <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                             {menu}
+                            <div className="navbar-end lg:hidden md:hidden">
+                                {
+                                    user?.uid ?
+                                        <>
+                                            <img title={user.displayName} src={user.photoURL} className="w-[60px] h-[60px] rounded-full mr-3 mb-3 mt-3" alt="user Profile" />
+                                            <button onClick={handleUserLogOut} className="btn">Sign Out</button>
+                                        </>
+                                        :
+                                        <>
+                                            <Link to="/signin" className="btn mr-2 my-3">Sign In</Link>
+                                            <Link to="/signup" className="btn">Sign Up</Link>
+                                        </>
+                                }
+                            </div>
                         </ul>
                     </div>
                     <Link className="btn btn-ghost normal-case text-xl">
                         <img src={logo} alt="logo" className='w-[60px]' />
-                        Collected Mobile</Link>
+                        Collected Mobile
+                    </Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal p-0">
                         {menu}
                     </ul>
                 </div>
-                <div className="navbar-end">
+                <div className="navbar-end hidden lg:block md:block">
                     {
                         user?.uid ?
-                            <>
+                            <div className='flex items-center justify-end'>
                                 <img title={user.displayName} src={user.photoURL} className="w-[60px] h-[60px] rounded-full mr-3" alt="user Profile" />
                                 <button onClick={handleUserLogOut} className="btn">Sign Out</button>
-                            </>
+                            </div>
                             :
-                            <>
+                            <div className='flex items-center justify-end'>
                                 <Link to="/signin" className="btn mr-2">Sign In</Link>
                                 <Link to="/signup" className="btn">Sign Up</Link>
-                            </>
+                            </div>
                     }
                 </div>
             </div>

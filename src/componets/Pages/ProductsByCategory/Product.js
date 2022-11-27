@@ -2,7 +2,7 @@ import React from 'react';
 import { FaCheckCircle, FaMapMarkerAlt } from "react-icons/fa";
 
 
-const Product = ({ product }) => {
+const Product = ({ product, setBookingProduct }) => {
 
     const { _id, productName, brand, seller, location, originalPrice, picture, resalePrice, yearsOfUsed } = product;
 
@@ -34,9 +34,11 @@ const Product = ({ product }) => {
                     </h3>
                 </div>
 
-
                 <div className="card-actions mt-4">
-                    <button className="btn btn-secondary w-full">Book Now</button>
+                    <label
+                        onClick={() => setBookingProduct(product)}
+                        htmlFor="booking-modal"
+                        className="btn btn-secondary w-full">Book Now</label>
                 </div>
             </div>
         </div>
