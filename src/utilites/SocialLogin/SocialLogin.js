@@ -9,7 +9,7 @@ const SocialLogin = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
-    const roll = 'User';
+    const roll = 'Buyer';
 
 
     // Google Login system

@@ -1,11 +1,6 @@
 [
     {
-        "picture": [
-            "https://i.ibb.co/y0MDXDN/samsung-1.jpg",
-            "https://i.ibb.co/h8YcZ1w/samsung-2.jpg",
-            "https://i.ibb.co/Xtt02pP/samsung-3.jpg",
-            "https://i.ibb.co/LRbQdYP/samsung-4.jpg"
-        ],
+        "picture": "https://i.ibb.co/y0MDXDN/samsung-1.jpg",
         "productName": "Galaxy A52S",
         "location": "Khulna",
         "resalePrice": 33500,
@@ -13,16 +8,13 @@
         "yearsOfUsed": "1 year",
         "brand": "Samsung",
         "category": "samsung",
+        "seller": "Himel Hasan",
         "category_id": 2,
         "features": "Bluetooth, Camera, Expandable Memory, Fingerprint Sensor, GPS, 3G, 4G, GSM, Touch screen",
         "description": ""
     },
     {
-        "picture": [
-            "https://i.ibb.co/KDTQDmt/s1.jpg",
-            "https://i.ibb.co/Qd5ys6h/s2.jpg",
-            "https://i.ibb.co/jgdqjvS/s3.jpg"
-        ],
+        "picture": "https://i.ibb.co/KDTQDmt/s1.jpg",
         "productName": "Galaxy S8",
         "location": "Gazipur",
         "resalePrice": 5000,
@@ -30,16 +22,13 @@
         "yearsOfUsed": "2 years",
         "brand": "Samsung",
         "category": "samsung",
+        "seller": "Himel Hasan",
         "category_id": 2,
         "features": "Bluetooth, Camera, Expandable Memory, Fingerprint Sensor, GPS, 3G, 4G, GSM, Touch screen",
         "description": "Samsung Galaxy S8 ফোনটি ভালো। আমি এখনো ব্যবহার করতেছি শুধু ডিসপ্লের কোনার দিকে গ্লাস ফাটা এবং মোবাইলের পিছনের গ্লাসটি ফাটা। ফোনটি বাহির থেকে আনা সাথে চার্জার এবং হেডফোন পাবেন এবং সিকিউরিটি হিসেবে এনআইডি কার্ডের কপি পাবেন। 🎟ফিক্সড প্রাইস ৫০০০ টাকা (বি: দ্র: - ওহীতে কেউ ফোন দিবেন না)"
     },
     {
-        "picture": [
-            "https://i.ibb.co/vX66z5j/galaxy-j7.jpg",
-            "https://i.ibb.co/r7XG3J4/samsung1.jpg",
-            "https://i.ibb.co/p0z0WdV/samsung2.jpg"
-        ],
+        "picture": "https://i.ibb.co/vX66z5j/galaxy-j7.jpg",
         "productName": "Galaxy J7",
         "location": "Cumilla",
         "resalePrice": 4000,
@@ -47,16 +36,13 @@
         "yearsOfUsed": "3 years",
         "brand": "Samsung",
         "category": "samsung",
+        "seller": "Rana",
         "category_id": 2,
         "features": " Bluetooth, Camera, Dual-Lens Camera, Dual SIM, Expandable Memory, Fingerprint Sensor, GPS, Motion Sensors, 3G, 4G, GSM, Touch screen",
         "description": "argent takar dorkar"
     },
     {
-        "picture": [
-            "https://i.ibb.co/M920SwQ/iphone-6.jpg",
-            "https://i.ibb.co/KXsfFpx/iphone-6-1.jpg",
-            "https://i.ibb.co/MhQq1K2/iphone-6-2.jpg"
-        ],
+        "picture": "https://i.ibb.co/M920SwQ/iphone-6.jpg",
         "productName": "iPhone 6S",
         "location": "Dhaka",
         "resalePrice": 11400,
@@ -64,16 +50,13 @@
         "yearsOfUsed": "1 year",
         "brand": "Apple",
         "category": "apple",
+        "seller": "Rana",
         "category_id": 1,
         "features": "Bluetooth, Camera, Dual-Lens Camera, Expandable Memory, Fingerprint Sensor, GPS, Physical keyboard, Motion Sensors, 3G, 4G, 5G, GSM, Touch screen",
         "description": "বিস্তারিত জানতে কল করুন বা আমাদের শোরুম পরিদর্শন করুন! "
     },
     {
-        "picture": [
-            "https://i.ibb.co/WcYXRc4/iphone.jpg",
-            "https://i.ibb.co/gDKq34J/iphone1.jpg",
-            "https://i.ibb.co/W0sQ1yb/iphone3.jpg"
-        ],
+        "picture": "https://i.ibb.co/WcYXRc4/iphone.jpg",
         "productName": "iPhone 7",
         "location": "Sadar, Kishoreganj",
         "resalePrice": 34000,
@@ -81,16 +64,13 @@
         "yearsOfUsed": "4 years",
         "brand": "Apple",
         "category": "apple",
+        "seller": "Modassir",
         "category_id": 1,
         "features": "Bluetooth, Camera, Dual-Lens Camera, Expandable Memory, Fingerprint Sensor, GPS, Physical keyboard, Motion Sensors, 3G, 4G, 5G, GSM, Touch screen",
         "description": "BRAND:Apple, MODEL:iphone 7, RAM📁:2GB, STORAGE📁:128GB, DISPLAY:4:7nice, BATTERY:1860mAh, CAMERA:8MP"
     },
     {
-        "picture": [
-            "https://i.ibb.co/3NcVyV3/iphone.jpg",
-            "https://i.ibb.co/YXdZBgg/iphone-plus.jpg",
-            "https://i.ibb.co/F6t0gkf/iphones.jpg"
-        ],
+        "picture": "https://i.ibb.co/3NcVyV3/iphone.jpg",
         "productName": "iPhone 6",
         "location": "Danmondi, Dhaka",
         "resalePrice": 6500,
@@ -98,17 +78,13 @@
         "yearsOfUsed": "4 years",
         "brand": "Apple",
         "category": "apple",
+        "seller": "Modassir",
         "category_id": 1,
         "features": "Bluetooth, Camera, Dual-Lens Camera, Dual SIM, Expandable Memory, Fingerprint Sensor, GPS, Physical keyboard, Motion Sensors, 3G, 4G, 5G, GSM, Touch screen",
         "description": "kono problem nai ami eita use theke ansilam.just sim tre ta. benge gesa. tasara kono Problem nai. alhamdulillah ok ar usa theke ansi tay box ta nei. tasara security deya jabe no problem jara nite chan (call:)"
     },
     {
-        "picture": [
-            "https://i.ibb.co/rQ2fPf0/y3.jpg",
-            "https://i.ibb.co/fXNwjmj/y33.jpg",
-            "https://i.ibb.co/KwpkSFc/y334.jpg",
-            "https://i.ibb.co/MZNxWZC/y3333.jpg"
-        ],
+        "picture": "https://i.ibb.co/rQ2fPf0/y3.jpg",
         "productName": "Redmi Y3",
         "location": "Mymonsingh",
         "resalePrice": 12000,
@@ -116,16 +92,13 @@
         "yearsOfUsed": "2 years",
         "brand": "Xiaomi",
         "category": "xiaomi",
+        "seller": "Munzereen",
         "category_id": 3,
         "features": "Bluetooth, Camera, Dual SIM, Expandable Memory, Fingerprint Sensor, GPS, 3G, 4G",
         "description": "It is a used phone. All the parts are totally okay. I have changed the battery about an year ago from xiaomi authorised customer care centre. That means the battery is 100% original. You will get minimum 4-5 hours battery backup in internet browsing. This phone is 3/32 variant. It's speciality is 32 MP selfie camera.  No broken spot available on the phone. I will only provide charger adapter with the phone. "
     },
     {
-        "picture": [
-            "https://i.ibb.co/FghMDk0/fr.jpg",
-            "https://i.ibb.co/Mknf4bd/r.jpg",
-            "https://i.ibb.co/KjSNytY/rr.jpg"
-        ],
+        "picture": "https://i.ibb.co/FghMDk0/fr.jpg",
         "productName": "Redmi Note 7",
         "location": "Gulshan, Dhaka",
         "resalePrice": 12000,
@@ -133,16 +106,13 @@
         "yearsOfUsed": "1 years",
         "brand": "Xiaomi",
         "category": "xiaomi",
+        "seller": "Munzereen",
         "category_id": 3,
         "features": "Bluetooth, Camera, Dual-Lens Camera, Dual SIM, Expandable Memory, Fingerprint Sensor, GPS, Motion Sensors, 3G, 4G, GSM, Touch screen",
         "description": "REDMI NOTE 7 (4/64). 100% Fresh Condition like new smartphone. No dent or scratch. Material- Gorilla Glass 5 front & back, plastic frame, Back Camera- Dual 48+5 Megapixel, Selfi Camera- 13 Megapixel, Chipset- Qualcomm Snapdragon 660 (14 nm), Battery- 4000 mah"
     },
     {
-        "picture": [
-            "https://i.ibb.co/rp6vf4j/note10.jpg",
-            "https://i.ibb.co/XXLkQ5Z/note-10.jpg",
-            "https://i.ibb.co/QXV4WcR/note10r.jpg"
-        ],
+        "picture": "https://i.ibb.co/rp6vf4j/note10.jpg",
         "productName": "Redmi Note 10 Pro",
         "location": "Kashimpur",
         "resalePrice": 16000,
@@ -150,6 +120,7 @@
         "yearsOfUsed": "1 years",
         "brand": "Xiaomi",
         "category": "xiaomi",
+        "seller": "Ayman",
         "category_id": 3,
         "features": "Bluetooth, Camera, Dual-Lens Camera, Dual SIM, Expandable Memory, Fingerprint Sensor, GPS, Physical keyboard, Motion Sensors, 3G, 4G, GSM, Touch screen",
         "description": "ফোনে কনো পকার প্রবলেম নাই । ফোনে সাথে সব কিছু আছে । সুধু হাত থেকে পরে পিছনের ব্যাক সেল ফেটে গিয়ে ছিলে সুধু ব্যাক সেল  পাল্টানো হয়েছে আর একটু নিচে টাচ ফাটা কেউ বুঝতে পারবে না তা ছাড়া ফোনে কনো পকার প্রবলেম নাই এখন বর্তমান একদোম ফুল ফেস আছে"

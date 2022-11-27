@@ -141,7 +141,7 @@ const SignUp = () => {
                                     <select
                                         {...register("roll")}
                                         className="select select-bordered lg:w-[160px] md:w-[160px] w-[130px]">
-                                        <option selected defaultValue={'User'} >User</option>
+                                        <option selected defaultValue={'Buyer'} >Buyer</option>
                                         <option defaultValue={'Seller'} >Seller</option>
                                     </select>
                                 </div>
