@@ -20,7 +20,7 @@ const MyOrders = () => {
     })
 
     return (
-        <div className='bg-gray-100 p-5'>
+        <div className='bg-gray-100 p-12'>
             <h2 className='text-3xl mb-3'>My Orders</h2>
 
             <div className="overflow-x-auto w-full">
@@ -28,7 +28,6 @@ const MyOrders = () => {
 
                     <thead>
                         <tr>
-                             
                             <th>Image</th>
                             <th>Title</th>
                             <th>Price</th>

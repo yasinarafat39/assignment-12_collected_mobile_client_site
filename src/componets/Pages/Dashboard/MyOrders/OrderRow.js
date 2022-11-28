@@ -6,7 +6,6 @@ const OrderRow = ({ booking }) => {
     return (
         <tr>
 
-
             <td>
                 <div className="flex items-center space-x-3">
                     <div className="avatar">
@@ -20,11 +19,11 @@ const OrderRow = ({ booking }) => {
 
             <td>
                 <div>
-                    <div className="font-bold">productName</div>
+                    <div className="font-bold text-2xl">{productName}</div>
                 </div>
             </td>
 
-            <td>{price}</td>
+            <td className='font-bold text-xl text-cyan-500'>{price} taka</td>
             <th>
                 <button className="btn btn-secondary">Pay</button>
             </th>
