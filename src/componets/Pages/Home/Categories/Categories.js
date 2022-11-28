@@ -21,7 +21,7 @@ const Categories = () => {
     return (
         <section className='mt-20'>
             <h2 className='text-4xl font-bold text-center text-secondary'>Mobile Category</h2>
-            <p className='text-center mt-2 text-gray-500'>Choice Your Favorite Mobile</p>
+            <p className='text-center mt-2 text-gray-500'>Choice Your Favorite Mobile From This Category</p>
 
             <div className='mt-8 m-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10'>
                 {
