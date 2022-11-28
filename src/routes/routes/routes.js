@@ -8,6 +8,7 @@ import ProductsByCategory from "../../componets/Pages/ProductsByCategory/Product
 import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
 import Dashboard from "../../componets/Pages/Dashboard/Dashboard";
 import DashboardLayout from "../../Layout/DashboardLayout";
+import MyOrders from "../../componets/Pages/Dashboard/MyOrders/MyOrders";
 
 export const router = createBrowserRouter([
     {
@@ -40,7 +41,7 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: '/dashboard',
-                element: <Dashboard></Dashboard>
+                element: <MyOrders></MyOrders>
             }
         ]
     }
