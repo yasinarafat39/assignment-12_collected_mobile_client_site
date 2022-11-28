@@ -1,24 +1,35 @@
+import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import toast from 'react-hot-toast';
 
 const ProductRow = ({ product }) => {
-    console.log(product);
     const { _id, picture, salesStatus, resalePrice, productName, } = product;
 
 
 
     const handleDeleteProduct = () => {
+
+
         fetch(`http://localhost:5000/product/${_id}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json'
             },
-           
+
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+
+                if (data.deletedCount === 1) {
+                    toast.success('Delete Successfully')
+                    console.log(data);
+                }
             })
     }
+
+
+    
+
 
     return (
         <tr>
