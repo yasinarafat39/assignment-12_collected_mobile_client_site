@@ -1,14 +1,14 @@
 import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { FaFacebook, FaGoogle } from 'react-icons/fa';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 
 const SocialLogin = () => {
     const { googleLogin, facebookLogin } = useContext(AuthContext);
     const navigate = useNavigate();
-    const location = useLocation();
-    const from = location.state?.from?.pathname || "/";
+
+
     const roll = 'Buyer';
 
 
@@ -20,10 +20,10 @@ const SocialLogin = () => {
                 console.log(user);
                 saveUser(user.displayName, user.email, roll);
                 toast.success("Login Success");
-                navigate(from, { replace: true });
+                navigate('/');
             })
             .catch(error => {
-                console.error(error)
+                toast.error(error.message)
             })
     }
 
@@ -35,10 +35,10 @@ const SocialLogin = () => {
                 console.log(user);
                 saveUser(user.displayName, user.email, roll);
                 toast.success('Login Success');
-                navigate(from, { replace: true });
+                navigate('/');
             })
             .catch(error => {
-                console.error(error);
+                toast.error(error.message)
             })
     }
 
