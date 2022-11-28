@@ -1,20 +1,27 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../../../Contexts/AuthProvider/AuthProvider';
 
 const AddProduct = () => {
-
+    const { user } = useContext(AuthContext);
     const { register, getValues, handleSubmit, formState: { errors } } = useForm();
     const [addProductError, setAddProductError] = useState('');
     const imageHostKey = process.env.REACT_APP_imgbb_key;
     const [mobilePicture, setMobilePicture] = useState('');
 
-    const handleAddProduct = data => {
+    const navigate = useNavigate();
 
+
+
+    const handleAddProduct = data => {
 
         const picture = data.picture[0];
         const formData = new FormData();
         formData.append('image', picture)
+
+
 
         fetch(`https://api.imgbb.com/1/upload?key=${imageHostKey}`, {
             method: "POST",
@@ -24,25 +31,39 @@ const AddProduct = () => {
             .then(imgData => {
                 if (imgData.success) {
                     const picture = imgData.data.url;
-                    setMobilePicture(picture)
+
+                    const product = {
+                        category_id: parseInt(data.category_id),
+                        condition: data.condition,
+                        description: data.description,
+                        location: data.location,
+                        originalPrice: data.originalPrice,
+                        picture,
+                        productName: data.productName,
+                        resalePrice: data.resalePrice,
+                        yearsOfUsed: data.yearsOfUsed,
+                        seller: user.displayName,
+                        email: user.email,
+                        salesStatus: "sold"
+                    }
+
+                    fetch('http://localhost:5000/products', {
+                        method: 'POST',
+                        headers: {
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify(product)
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            toast.success('Product Add Successfully!')
+
+                        })
                 }
             })
 
-        console.log(data);
 
-        
 
-        fetch('http://localhost:5000/products', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-            .then(res => res.json())
-            .then(data => {
-                toast.success('Product Add Successfully!')
-            })
 
     }
 
@@ -108,9 +129,9 @@ const AddProduct = () => {
                         <select
                             {...register("category_id")}
                             className="select select-bordered lg:w-[160px] md:w-[160px] w-[130px]">
-                            <option Value={1} >Apple</option>
-                            <option Value={2} >Samsung</option>
-                            <option Value={3} >Xiaomi</option>
+                            <option value={'1'} >Apple</option>
+                            <option value={'2'} >Samsung</option>
+                            <option value={'3'} >Xiaomi</option>
                         </select>
                     </div>
 
