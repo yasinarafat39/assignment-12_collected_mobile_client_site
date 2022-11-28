@@ -8,8 +8,6 @@ const ProductRow = ({ product }) => {
 
 
     const handleDeleteProduct = () => {
-
-
         fetch(`http://localhost:5000/product/${_id}`, {
             method: 'DELETE',
             headers: {
@@ -28,7 +26,9 @@ const ProductRow = ({ product }) => {
     }
 
 
-    
+    const handleMakeAdvertise = () => {
+        
+    }
 
 
     return (
@@ -54,7 +54,7 @@ const ProductRow = ({ product }) => {
             <td className='font-bold text-xl text-cyan-500'>{resalePrice} taka</td>
             <td className='text-xl font-bold text-green-600'>{salesStatus}</td>
             <th>
-                <button className="btn btn-secondary">Make Advertise</button>
+                <button onClick={handleMakeAdvertise} className="btn btn-secondary">Make Advertise</button>
             </th>
             <th>
                 <button onClick={handleDeleteProduct} className="btn ">Delete</button>

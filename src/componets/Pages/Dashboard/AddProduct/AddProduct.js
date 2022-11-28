@@ -44,7 +44,7 @@ const AddProduct = () => {
                         yearsOfUsed: data.yearsOfUsed,
                         seller: user.displayName,
                         email: user.email,
-                        salesStatus: "sold"
+                        salesStatus: "available"
                     }
 
                     fetch('http://localhost:5000/products', {
