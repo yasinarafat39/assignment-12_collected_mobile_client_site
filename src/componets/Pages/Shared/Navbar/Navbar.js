@@ -13,7 +13,10 @@ const Navbar = () => {
         <li><NavLink to="/">Home</NavLink></li>
         <li><NavLink to="/about">About</NavLink></li>
         <li><NavLink to="/blog">Blog</NavLink></li>
-
+        {
+            user?.uid &&
+            <li><NavLink to="/dashboard">Dashboard</NavLink></li>
+        }
     </>
 
     // User LogOut

@@ -6,6 +6,7 @@ import SignIn from "../../componets/Pages/SignIn/SignIn"
 import SignUp from "../../componets/Pages/SignUp/SignUp"
 import ProductsByCategory from "../../componets/Pages/ProductsByCategory/ProductsByCategory";
 import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
+import Dashboard from "../../componets/Pages/Dashboard/Dashboard";
 
 export const router = createBrowserRouter([
     {
@@ -31,5 +32,9 @@ export const router = createBrowserRouter([
                 loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`)
             }
         ]
+    },
+    {
+        path: '/dashboard',
+        element: <PrivateRoutes><Dashboard></Dashboard></PrivateRoutes>
     }
 ])
