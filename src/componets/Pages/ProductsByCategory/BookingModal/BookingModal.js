@@ -18,7 +18,8 @@ const BookingModal = ({ bookingProduct, setBookingProduct }) => {
             userEmail: data.email,
             price: data.price,
             phone: data.phone,
-            meetingLocation: data.location
+            meetingLocation: data.location,
+            bookingProduct: bookingProduct
         }
         console.log(booking);
 
@@ -91,48 +92,6 @@ const BookingModal = ({ bookingProduct, setBookingProduct }) => {
                         </div>
                     </form>
 
-                    {/* <form onSubmit={handleSubmit(testFunction)}>
-
-                        <div className="form-control">
-                            <label className="label" htmlFor='name'>
-                                <span className="label-text">Name</span>
-                            </label>
-                            <input {...register("name", { required: "name is required." })} defaultValue={user.displayName} readOnly type="text" id='name' className="input input-bordered" />
-
-                        </div>
-                        <div className="form-control">
-                            <label className="label" htmlFor='email'>
-                                <span className="label-text">Email</span>
-                            </label>
-                            <input {...register("email", { required: "Email is required." })} defaultValue={user.email} readOnly type="email" id='email' className="input input-bordered" />
-
-                        </div>
-                        <div className="form-control">
-                            <label className="label" htmlFor='price'>
-                                <span className="label-text">Price</span>
-                            </label>
-                            <input {...register("price", { required: "price is required." })} defaultValue={resalePrice} readOnly type="text" id='price' className="input input-bordered" />
-
-                        </div>
-                        <div className="form-control">
-                            <label className="label" htmlFor='phone'>
-                                <span className="label-text">Phone</span>
-                            </label>
-                            <input {...register("phone", { required: "phone is required." })} type="number" id='phone' className="input input-bordered" />
-                            {errors.phone && <small className='text-red-400'>{errors.phone.message}</small>}
-                        </div>
-                        <div className="form-control">
-                            <label className="label" htmlFor='location'>
-                                <span className="label-text">Meeting Location</span>
-                            </label>
-                            <input {...register("location", { required: "Meeting location is required." })} type="text" id='location' className="input input-bordered" />
-                            {errors.location && <small className='text-red-400'>{errors.location.message}</small>}
-                        </div>
-
-                        <div className="form-control mt-6">
-                            <button className="btn btn-primary">Sign Up</button>
-                        </div>
-                    </form> */}
                 </div>
             </div>
         </>

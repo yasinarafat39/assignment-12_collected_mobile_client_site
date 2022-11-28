@@ -9,7 +9,7 @@ const MyOrders = () => {
 
     const url = `http://localhost:5000/bookings?email=${user.email}`;
 
-    const { data: orders } = useQuery({
+    const { data: bookings = [] } = useQuery({
         queryKey: ['bookings', user?.email],
         queryFn: async () => {
             const res = await fetch(url);
@@ -38,32 +38,38 @@ const MyOrders = () => {
                     </thead>
                     <tbody>
 
-                        <tr>
-                            <td>
+                        {
+                            bookings &&
+                            bookings.map((booking, index) => <tr
+                                key={index}
+                            >
+                                <td>
 
-                            </td>
-                            <td>
-                                <div className="flex items-center space-x-3">
-                                    <div className="avatar">
-                                        <div className="mask mask-squircle w-12 h-12">
-                                            <img src="/tailwind-css-component-profile-2@56w.png" alt="Avatar Tailwind CSS Component" />
+                                </td>
+                                <td>
+                                    <div className="flex items-center space-x-3">
+                                        <div className="avatar">
+                                            <div className="mask mask-squircle w-12 h-12">
+                                                <img src="/tailwind-css-component-profile-2@56w.png" alt="Avatar Tailwind CSS Component" />
+                                            </div>
                                         </div>
+
                                     </div>
+                                </td>
 
-                                </div>
-                            </td>
+                                <td>
+                                    <div>
+                                        <div className="font-bold">Product Name</div>
+                                    </div>
+                                </td>
 
-                            <td>
-                                <div>
-                                    <div className="font-bold">Product Name</div>
-                                </div>
-                            </td>
+                                <td>Price</td>
+                                <th>
+                                    <button className="btn btn-secondary">Pay</button>
+                                </th>
+                            </tr>)
+                        }
 
-                            <td>Price</td>
-                            <th>
-                                <button className="btn btn-secondary">Pay</button>
-                            </th>
-                        </tr>
 
                     </tbody>
 
