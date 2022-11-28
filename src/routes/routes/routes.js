@@ -7,6 +7,7 @@ import SignUp from "../../componets/Pages/SignUp/SignUp"
 import ProductsByCategory from "../../componets/Pages/ProductsByCategory/ProductsByCategory";
 import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
 import Dashboard from "../../componets/Pages/Dashboard/Dashboard";
+import DashboardLayout from "../../Layout/DashboardLayout";
 
 export const router = createBrowserRouter([
     {
@@ -35,6 +36,12 @@ export const router = createBrowserRouter([
     },
     {
         path: '/dashboard',
-        element: <PrivateRoutes><Dashboard></Dashboard></PrivateRoutes>
+        element: <PrivateRoutes><DashboardLayout></DashboardLayout></PrivateRoutes>,
+        children: [
+            {
+                path: '/dashboard',
+                element: <Dashboard></Dashboard>
+            }
+        ]
     }
 ])
