@@ -1,13 +1,49 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 
 const AddProduct = () => {
 
     const { register, getValues, handleSubmit, formState: { errors } } = useForm();
     const [addProductError, setAddProductError] = useState('');
+    const imageHostKey = process.env.REACT_APP_imgbb_key;
+    const [mobilePicture, setMobilePicture] = useState('');
 
     const handleAddProduct = data => {
+
+
+        const picture = data.picture[0];
+        const formData = new FormData();
+        formData.append('image', picture)
+
+        fetch(`https://api.imgbb.com/1/upload?key=${imageHostKey}`, {
+            method: "POST",
+            body: formData
+        })
+            .then(res => res.json())
+            .then(imgData => {
+                if (imgData.success) {
+                    const picture = imgData.data.url;
+                    setMobilePicture(picture)
+                }
+            })
+
         console.log(data);
+
+        
+
+        fetch('http://localhost:5000/products', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(data => {
+                toast.success('Product Add Successfully!')
+            })
+
     }
 
     return (
@@ -76,6 +112,14 @@ const AddProduct = () => {
                             <option Value={2} >Samsung</option>
                             <option Value={3} >Xiaomi</option>
                         </select>
+                    </div>
+
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Mobile Photo</span>
+                        </label>
+                        <input {...register("picture", { required: "Mobile Photo is required" })} type="file" className="" />
+                        {errors.picture && <small className='text-red-400'>{errors.picture.message}</small>}
                     </div>
 
                     <div className="form-control">

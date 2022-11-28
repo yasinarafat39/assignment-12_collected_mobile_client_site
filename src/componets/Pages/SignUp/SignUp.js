@@ -15,7 +15,7 @@ const SignUp = () => {
     const [signUpError, setSignUpError] = useState('');
     const [createdUserEmail, setCreatedUserEmail] = useState('');
     const [imgUrl, setImgUrl] = useState('');
-    console.log(imgUrl);
+     
     const navigate = useNavigate();
 
 
