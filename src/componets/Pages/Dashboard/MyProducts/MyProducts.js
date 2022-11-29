@@ -27,6 +27,7 @@ const MyProducts = () => {
             <h2 className='text-3xl mb-3'>My Product</h2>
 
             <div className="overflow-x-auto">
+               
                 <table className="table w-full">
 
                     <thead>

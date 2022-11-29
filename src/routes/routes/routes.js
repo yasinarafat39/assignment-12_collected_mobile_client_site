@@ -11,6 +11,8 @@ import DashboardLayout from "../../Layout/DashboardLayout";
 import MyOrders from "../../componets/Pages/Dashboard/MyOrders/MyOrders";
 import AddProduct from "../../componets/Pages/Dashboard/AddProduct/AddProduct";
 import MyProducts from "../../componets/Pages/Dashboard/MyProducts/MyProducts";
+import AllSeller from "../../componets/Pages/Dashboard/AllSeller/AllSeller";
+import MakeAdmin from "../../componets/Pages/Dashboard/MakeAdmin/MakeAdmin";
 
 
 export const router = createBrowserRouter([
@@ -44,15 +46,23 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: '/dashboard',
-                element: <PrivateRoutes><MyOrders></MyOrders></PrivateRoutes>
+                element: <MyOrders></MyOrders>
             },
             {
                 path: '/dashboard/addproduct',
-                element: <PrivateRoutes><AddProduct></AddProduct></PrivateRoutes>
+                element: <AddProduct></AddProduct>
             },
             {
                 path: '/dashboard/myproducts',
-                element: <PrivateRoutes><MyProducts></MyProducts></PrivateRoutes>
+                element: <MyProducts></MyProducts>
+            },
+            {
+                path: '/dashboard/allseller',
+                element: <AllSeller></AllSeller>
+            },
+            {
+                path: '/dashboard/makeadmin',
+                element: <MakeAdmin></MakeAdmin>
             }
         ]
     }
