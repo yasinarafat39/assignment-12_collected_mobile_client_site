@@ -3,8 +3,7 @@ import React from 'react';
 import toast from 'react-hot-toast';
 
 const ProductRow = ({ product }) => {
-    const { _id, picture, salesStatus, resalePrice, productName, } = product;
-
+    const { _id, picture, salesStatus, resalePrice, productName } = product;
 
 
     const handleDeleteProduct = () => {
@@ -26,20 +25,28 @@ const ProductRow = ({ product }) => {
 
 
     const handleMakeAdvertise = () => {
-        fetch('http://localhost:5000/advertise', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(product)
-        })
-            .then(res => res.json())
-            .then(data => {
 
-                if (data.acknowledged) {
-                    toast.success('Advertise Make Success');
-                }
+        if (salesStatus === 'available') {
+            fetch('http://localhost:5000/advertise', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(product)
             })
+                .then(res => res.json())
+                .then(data => {
+
+                    if (data.acknowledged) {
+                        toast.success('Advertise Make Success');
+                    }
+                })
+        } else if (salesStatus === 'sold') {
+            toast.error("Your Mobile Phone is Sold. You can't Advertise Your Mobile.")
+        }
+
+
+
     }
 
 
@@ -64,7 +71,7 @@ const ProductRow = ({ product }) => {
             </td>
 
             <td className='font-bold text-xl text-cyan-500'>{resalePrice} taka</td>
-            <td className='text-xl font-bold text-green-600'>{salesStatus}</td>
+            <td className={salesStatus === 'available' ? 'text-xl font-bold text-green-600' : 'text-xl font-bold text-red-300'}>{salesStatus}</td>
             <th>
                 <button onClick={handleMakeAdvertise} className="btn btn-secondary btn-sm ">Make Advertise</button>
             </th>

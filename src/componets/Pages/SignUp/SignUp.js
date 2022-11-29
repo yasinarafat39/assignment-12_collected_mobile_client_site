@@ -4,6 +4,7 @@ import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
 import useTitle from '../../../hooks/useTitle';
+import useToken from '../../../hooks/useToken';
 import SocialLogin from '../../../utilites/SocialLogin/SocialLogin';
 
 const SignUp = () => {
@@ -15,9 +16,13 @@ const SignUp = () => {
     const [signUpError, setSignUpError] = useState('');
     const [createdUserEmail, setCreatedUserEmail] = useState('');
     const [imgUrl, setImgUrl] = useState('');
-     
+
+    const [token] = useToken(createdUserEmail)
     const navigate = useNavigate();
 
+    if (token) {
+        navigate('/')
+    }
 
     const handleSignUp = data => {
         const roll = getValues('roll');
@@ -53,7 +58,7 @@ const SignUp = () => {
                                 .then(() => {
                                     toast.success('Sign Up Success');
                                     saveUser(data.fullName, data.email, roll);
-                                    navigate('/');
+
                                 })
                                 .catch(error => {
                                     console.error(error.message);
@@ -88,6 +93,7 @@ const SignUp = () => {
                 setCreatedUserEmail(email)
             })
     }
+
 
     return (
         <div className="hero min-h-screen bg-base-200">

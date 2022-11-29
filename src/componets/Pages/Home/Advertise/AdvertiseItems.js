@@ -19,7 +19,7 @@ const AdvertiseItems = () => {
     return (
 
 
-        <section className={advertiseItems.length === 0 ? 'hidden' : 'py-6 bg-gray-100 text-gray-800 mt-24'}>
+        <section className={advertiseItems?.length === 0 ? 'hidden' : 'py-6 bg-gray-100 text-gray-800 mt-24'}>
             <div className="container p-4 mx-auto space-y-16 sm:p-10">
                 <div className="space-y-4">
                     <h3 className="text-2xl font-bold leading-none sm:text-5xl">Advertise Items</h3>

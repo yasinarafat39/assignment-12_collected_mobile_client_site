@@ -2,8 +2,6 @@ import React from 'react';
 
 const AdvertiseItem = ({ advertiseItem }) => {
 
-    console.log(advertiseItem);
-
     const { picture, resalePrice, productName, originalPrice } = advertiseItem;
 
     return (
