@@ -1,6 +1,7 @@
 
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import toast from 'react-hot-toast';
 import useTitle from '../../../../hooks/useTitle';
 import Loading from '../../../../utilites/Loader/Loading';
 
@@ -12,7 +13,11 @@ const AllSeller = () => {
     const { data: sellers = [], isLoading, refetch } = useQuery({
         queryKey: ['sellers'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/users/Seller');
+            const res = await fetch('http://localhost:5000/users/Seller', {
+                headers: {
+                    authorization: `bearer ${localStorage.getItem('accessToken')}`
+                }
+            });
             const data = await res.json();
             return data;
         }
@@ -21,6 +26,28 @@ const AllSeller = () => {
     if (isLoading) {
         return <Loading></Loading>
     }
+
+
+    const handleVerifyUser = (name, _id) => {
+        const proceed = window.confirm(`You want to Verify ${name}`);
+
+        if (proceed) {
+            fetch(`http://localhost:5000/users/verify/${_id}`, {
+                method: 'PUT',
+                headers: {
+                    authorization: `bearer ${localStorage.getItem('accessToken')}`
+                }
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.modifiedCount > 0) {
+                        toast.success('User Verify successful.')
+                        refetch();
+                    }
+                })
+        }
+    }
+
 
     return (
         <div className='bg-gray-100 p-12'>
@@ -51,7 +78,10 @@ const AllSeller = () => {
                                         <th>{seller.name}</th>
                                         <td>{seller.email}</td>
                                         <td>
-                                            <button className='btn btn-sm btn-secondary'>Verify</button>
+                                            <button onClick={() => handleVerifyUser(seller.name, seller._id)}
+                                                className={`${seller?.status === 'Verified' ? 'btn btn-sm btn-success' : 'btn btn-sm btn-secondary'}`}>
+                                                {seller?.status}
+                                            </button>
                                         </td>
                                         <td className=''>
                                             <button className='btn btn-sm'>Delete</button>
