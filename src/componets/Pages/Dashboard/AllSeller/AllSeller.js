@@ -2,6 +2,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import toast from 'react-hot-toast';
+import { FaCheckCircle } from 'react-icons/fa';
 import useTitle from '../../../../hooks/useTitle';
 import Loading from '../../../../utilites/Loader/Loading';
 
@@ -80,7 +81,14 @@ const AllSeller = () => {
                                         <td>
                                             <button onClick={() => handleVerifyUser(seller.name, seller._id)}
                                                 className={`${seller?.status === 'Verified' ? 'btn btn-sm btn-success' : 'btn btn-sm btn-secondary'}`}>
-                                                {seller?.status}
+                                                {seller?.status === 'Verified' ? <>
+                                                    {seller.status} <FaCheckCircle className='  ml-1' />
+                                                </>
+                                                    : <>
+                                                        {seller.status}
+                                                    </>
+
+                                                }
                                             </button>
                                         </td>
                                         <td className=''>

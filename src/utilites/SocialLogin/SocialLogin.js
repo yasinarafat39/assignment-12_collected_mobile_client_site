@@ -10,7 +10,7 @@ const SocialLogin = () => {
 
 
     const role = 'Buyer';
-
+    const status = 'unverified';
 
     // Google Login system
     const handleGoogleLogin = () => {
@@ -44,7 +44,7 @@ const SocialLogin = () => {
 
     const saveUser = (name, email, role) => {
 
-        const user = { name, email, role }
+        const user = { name, email, role, status }
 
         fetch('http://localhost:5000/users', {
             method: 'POST',

@@ -26,6 +26,8 @@ const SignUp = () => {
 
     const handleSignUp = data => {
         const role = getValues('role');
+        const status = 'unverified'
+
 
         const profilePhoto = data.profilePhoto[0];
         const formData = new FormData();
@@ -57,7 +59,7 @@ const SignUp = () => {
                             updateUser(profile)
                                 .then(() => {
                                     toast.success('Sign Up Success');
-                                    saveUser(data.fullName, data.email, role);
+                                    saveUser(data.fullName, data.email, role, status);
 
                                 })
                                 .catch(error => {
@@ -77,9 +79,9 @@ const SignUp = () => {
 
 
 
-    const saveUser = (name, email, role) => {
+    const saveUser = (name, email, role, status) => {
 
-        const user = { name, email, role }
+        const user = { name, email, role, status }
 
         fetch('http://localhost:5000/users', {
             method: 'POST',
