@@ -9,7 +9,7 @@ const SocialLogin = () => {
     const navigate = useNavigate();
 
 
-    const roll = 'Buyer';
+    const role = 'Buyer';
 
 
     // Google Login system
@@ -18,7 +18,7 @@ const SocialLogin = () => {
             .then(userCredential => {
                 const user = userCredential.user;
                 console.log(user);
-                saveUser(user.displayName, user.email, roll);
+                saveUser(user.displayName, user.email, role);
                 toast.success("Login Success");
                 navigate('/');
             })
@@ -33,7 +33,7 @@ const SocialLogin = () => {
             .then(userCredential => {
                 const user = userCredential.user;
                 console.log(user);
-                saveUser(user.displayName, user.email, roll);
+                saveUser(user.displayName, user.email, role);
                 toast.success('Login Success');
                 navigate('/');
             })
@@ -42,9 +42,9 @@ const SocialLogin = () => {
             })
     }
 
-    const saveUser = (name, email, roll) => {
+    const saveUser = (name, email, role) => {
 
-        const user = { name, email, roll }
+        const user = { name, email, role }
 
         fetch('http://localhost:5000/users', {
             method: 'POST',

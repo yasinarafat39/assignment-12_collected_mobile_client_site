@@ -62,7 +62,7 @@ const MakeAdmin = () => {
                                     <th className='text-sm text-gray-600'></th>
                                     <th className='text-sm text-gray-600'>Name</th>
                                     <th className='text-sm text-gray-600'>Email</th>
-                                    <th className='text-sm text-gray-600'>User Roll</th>
+                                    <th className='text-sm text-gray-600'>User role</th>
                                     <th className='text-sm text-gray-600'>Make Admin</th>
                                 </tr>
                             </thead>
@@ -76,10 +76,10 @@ const MakeAdmin = () => {
                                         <th>{i + 1}</th>
                                         <td className='font-bold'>{user.name}</td>
                                         <td className='font-semibold'>{user.email}</td>
-                                        <td>{user.roll}</td>
+                                        <td>{user.role}</td>
                                         <td>
                                             {
-                                                user?.roll !== 'Admin' &&
+                                                user?.role !== 'Admin' &&
                                                 <button onClick={() => handleMakeAdmin(user._id, user.name)} className='btn btn-xs btn-success'>Make Admin</button>
                                             }
                                         </td>

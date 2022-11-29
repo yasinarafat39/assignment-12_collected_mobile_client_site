@@ -25,7 +25,7 @@ const SignUp = () => {
     }
 
     const handleSignUp = data => {
-        const roll = getValues('roll');
+        const role = getValues('role');
 
         const profilePhoto = data.profilePhoto[0];
         const formData = new FormData();
@@ -57,7 +57,7 @@ const SignUp = () => {
                             updateUser(profile)
                                 .then(() => {
                                     toast.success('Sign Up Success');
-                                    saveUser(data.fullName, data.email, roll);
+                                    saveUser(data.fullName, data.email, role);
 
                                 })
                                 .catch(error => {
@@ -77,9 +77,9 @@ const SignUp = () => {
 
 
 
-    const saveUser = (name, email, roll) => {
+    const saveUser = (name, email, role) => {
 
-        const user = { name, email, roll }
+        const user = { name, email, role }
 
         fetch('http://localhost:5000/users', {
             method: 'POST',
@@ -145,7 +145,7 @@ const SignUp = () => {
                                 <div className='flex justify-between mt-5'>
                                     <label className="label"><span className="label-text text-xl font-semibold mr-4">I would like to:</span></label>
                                     <select
-                                        {...register("roll")}
+                                        {...register("role")}
                                         className="select select-bordered lg:w-[160px] md:w-[160px] w-[130px]">
                                         <option selected defaultValue={'Buyer'} >Buyer</option>
                                         <option defaultValue={'Seller'} >Seller</option>
