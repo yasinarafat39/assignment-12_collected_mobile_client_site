@@ -2,10 +2,13 @@ import { async } from '@firebase/util';
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import { AuthContext } from '../../../../Contexts/AuthProvider/AuthProvider';
+import useTitle from '../../../../hooks/useTitle';
 import Loading from '../../../../utilites/Loader/Loading';
 import OrderRow from './OrderRow';
 
 const MyOrders = () => {
+
+    useTitle("My Orders")
 
     const { user } = useContext(AuthContext);
 

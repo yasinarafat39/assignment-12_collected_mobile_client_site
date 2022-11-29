@@ -1,10 +1,12 @@
 import { async } from '@firebase/util';
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import useTitle from '../../../../hooks/useTitle';
 import Seller from './Seller';
 
 const AllSeller = () => {
 
+    useTitle("All Seller");
 
     const { data: sellers } = useQuery({
         queryKey: ['seller'],
@@ -18,7 +20,7 @@ const AllSeller = () => {
 
     return (
         <div className='bg-gray-100 p-12'>
-            <h2 className='text-3xl mb-3 '>Add A Product</h2>
+            <h2 className='text-3xl mb-3 '>All Seller</h2>
 
 
             <table className="table w-full">

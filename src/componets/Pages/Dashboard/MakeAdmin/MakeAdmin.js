@@ -1,9 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import toast from 'react-hot-toast';
+import useTitle from '../../../../hooks/useTitle';
 import Loading from '../../../../utilites/Loader/Loading';
 
 const MakeAdmin = () => {
+
+    useTitle("Make Admin")
 
     const { data: users = [], isLoading, refetch } = useQuery({
         queryKey: ['users'],
@@ -20,18 +23,25 @@ const MakeAdmin = () => {
 
 
 
-    const handleMakeAdmin = _id => {
-        console.log(_id);
-        fetch(`http://localhost:5000/users/admin/${_id}`, {
-            method: 'PUT'
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.modifiedCount > 0) {
-                    toast.success('Make Admin successfully!')
-                    refetch();
+    const handleMakeAdmin = (_id, name) => {
+
+        const proceed = window.confirm(`Are you sure? You wand to make Admin ${name}.`)
+
+        if (proceed) {
+            fetch(`http://localhost:5000/users/admin/${_id}`, {
+                method: 'PUT',
+                headers: {
+                    authorization: `bearer ${localStorage.getItem('accessToken')}`
                 }
             })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.modifiedCount > 0) {
+                        toast.success('Make Admin successfully!')
+                        refetch();
+                    }
+                })
+        }
 
     }
 
@@ -70,7 +80,7 @@ const MakeAdmin = () => {
                                         <td>
                                             {
                                                 user?.roll !== 'Admin' &&
-                                                <button onClick={() => handleMakeAdmin(user._id)} className='btn btn-xs btn-success'>Make Admin</button>
+                                                <button onClick={() => handleMakeAdmin(user._id, user.name)} className='btn btn-xs btn-success'>Make Admin</button>
                                             }
                                         </td>
                                     </tr>)

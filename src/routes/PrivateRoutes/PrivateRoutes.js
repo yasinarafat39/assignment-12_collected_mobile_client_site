@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import { FidgetSpinner } from 'react-loader-spinner';
 import { Navigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import Loading from '../../utilites/Loader/Loading';

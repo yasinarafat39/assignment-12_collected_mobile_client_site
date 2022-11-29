@@ -13,6 +13,7 @@ import AddProduct from "../../componets/Pages/Dashboard/AddProduct/AddProduct";
 import MyProducts from "../../componets/Pages/Dashboard/MyProducts/MyProducts";
 import AllSeller from "../../componets/Pages/Dashboard/AllSeller/AllSeller";
 import MakeAdmin from "../../componets/Pages/Dashboard/MakeAdmin/MakeAdmin";
+import AdminRoute from "../AdminRoute/AdminRoute";
 
 
 export const router = createBrowserRouter([
@@ -58,11 +59,11 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/allseller',
-                element: <AllSeller></AllSeller>
+                element: <AdminRoute><AllSeller></AllSeller></AdminRoute>
             },
             {
                 path: '/dashboard/makeadmin',
-                element: <MakeAdmin></MakeAdmin>
+                element: <AdminRoute><MakeAdmin></MakeAdmin></AdminRoute>
             }
         ]
     }
