@@ -2,25 +2,32 @@
 import React from 'react';
 import toast from 'react-hot-toast';
 
-const ProductRow = ({ product }) => {
+const ProductRow = ({ product, refetch }) => {
     const { _id, picture, salesStatus, resalePrice, productName } = product;
 
 
     const handleDeleteProduct = () => {
-        fetch(`http://localhost:5000/product/${_id}`, {
-            method: 'DELETE',
-            headers: {
-                'content-type': 'application/json'
-            },
 
-        })
-            .then(res => res.json())
-            .then(data => {
 
-                if (data.deletedCount === 1) {
-                    toast.success('Delete Successfully');
-                }
+        const proceed = window.confirm("Are you sure? You wand to delete your product.")
+
+        if (proceed) {
+            fetch(`http://localhost:5000/product/${_id}`, {
+                method: 'DELETE',
+                headers: {
+                    'content-type': 'application/json'
+                },
+
             })
+                .then(res => res.json())
+                .then(data => {
+
+                    if (data.deletedCount === 1) {
+                        toast.success('Delete Successfully');
+                        refetch();
+                    }
+                })
+        }
     }
 
 
@@ -73,10 +80,10 @@ const ProductRow = ({ product }) => {
             <td className='font-bold text-xl text-cyan-500'>{resalePrice} taka</td>
             <td className={salesStatus === 'available' ? 'text-xl font-bold text-green-600' : 'text-xl font-bold text-red-300'}>{salesStatus}</td>
             <th>
-                <button onClick={handleMakeAdvertise} className="btn btn-secondary btn-sm ">Make Advertise</button>
+                <button onClick={handleMakeAdvertise} className="btn btn-secondary btn-sm">Make Advertise</button>
             </th>
             <th>
-                <button onClick={handleDeleteProduct} className="btn btn-sm ">Delete</button>
+                <button onClick={handleDeleteProduct} className="btn btn-sm">Delete</button>
             </th>
         </tr>
     );
