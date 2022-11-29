@@ -4,6 +4,7 @@ import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
 import useTitle from '../../../hooks/useTitle';
+import useToken from '../../../hooks/useToken';
 import SocialLogin from '../../../utilites/SocialLogin/SocialLogin';
 
 const SignIn = () => {
@@ -12,14 +13,16 @@ const SignIn = () => {
     useTitle("SignIn")
     const [signInError, setSignInError] = useState('');
     const { userSignIn, handleForgetPassword } = useContext(AuthContext);
-
-
+    const [loginUserEmail, setLoginUserEmail] = useState('')
+    const [token] = useToken(loginUserEmail);
     const navigate = useNavigate();
     const location = useLocation();
 
     const from = location?.state?.from?.pathname || "/";
 
-
+    if (token) {
+        navigate(from, { replace: true });
+    }
 
     const handleSignIn = data => {
         console.log(data);
@@ -30,8 +33,7 @@ const SignIn = () => {
                 console.log(user);
                 toast.success('LogIn Success!');
                 setSignInError('');
-
-                navigate(from, { replace: true });
+                setLoginUserEmail(user.email)
             })
             .catch(error => {
                 setSignInError(error.message);
