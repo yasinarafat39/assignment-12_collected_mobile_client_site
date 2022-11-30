@@ -76,7 +76,7 @@ const AllSeller = () => {
     }
 
     return (
-        <div className='bg-gray-100 p-12'>
+        <div className='bg-gray-300 p-12'>
             <h2 className='text-3xl mb-3 '>All Seller</h2>
 
 

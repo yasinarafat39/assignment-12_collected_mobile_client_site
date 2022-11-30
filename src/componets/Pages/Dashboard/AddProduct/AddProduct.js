@@ -76,7 +76,7 @@ const AddProduct = () => {
     }
 
     return (
-        <div className='bg-gray-100 p-12'>
+        <div className='bg-gray-300 p-12'>
             <h2 className='text-3xl mb-3 text-center'>Add A Product</h2>
 
             <div className='lg:w-1/2 mx-auto'>

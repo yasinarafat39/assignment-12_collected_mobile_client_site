@@ -26,7 +26,7 @@ const MyProfile = () => {
     const { email, name, role, status, _id } = userData;
 
     return (
-        <div className='bg-gray-100 p-12 max-screen'>
+        <div className='bg-gray-300 p-12 max-screen'>
             <h2 className='text-3xl text-center mb-14'>My Profile</h2>
 
 
