@@ -15,6 +15,7 @@ const AuthProvider = ({ children }) => {
 
     // create new user
     const createUser = (email, password) => {
+        setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password);
     }
 
@@ -25,27 +26,32 @@ const AuthProvider = ({ children }) => {
 
     // User Sign In Method
     const userSignIn = (email, password) => {
+        setLoading(true);
         return signInWithEmailAndPassword(auth, email, password)
     }
 
     // Forget Password
     const handleForgetPassword = (email) => {
+        setLoading(true);
         return sendPasswordResetEmail(auth, email);
     }
 
     // user LogOut System
     const userLogOut = () => {
+        setLoading(true);
         return signOut(auth);
     }
 
     // Google Login
     const googleLogin = () => {
+        setLoading(true);
         return signInWithPopup(auth, googleProvider);
     }
 
 
     // Facebook Login
     const facebookLogin = () => {
+        setLoading(true);
         return signInWithPopup(auth, facebookProvider);
     }
 

@@ -15,6 +15,7 @@ const SignUp = () => {
     const imageHostKey = process.env.REACT_APP_imgbb_key;
     const [signUpError, setSignUpError] = useState('');
     const [createdUserEmail, setCreatedUserEmail] = useState('');
+    console.log(createdUserEmail);
     const [imgUrl, setImgUrl] = useState('');
 
     const [token] = useToken(createdUserEmail)
@@ -59,8 +60,9 @@ const SignUp = () => {
                             updateUser(profile)
                                 .then(() => {
                                     toast.success('Sign Up Success');
+                                    console.log(data.email);
                                     saveUser(data.fullName, data.email, role, status);
-
+                                    window.location.reload();
                                 })
                                 .catch(error => {
                                     console.error(error.message);
@@ -75,6 +77,8 @@ const SignUp = () => {
                 console.error(error)
                 setSignUpError(error.message);
             })
+
+        console.log(data);
     }
 
 
@@ -82,6 +86,7 @@ const SignUp = () => {
     const saveUser = (name, email, role, status) => {
 
         const user = { name, email, role, status }
+
 
         fetch('http://localhost:5000/users', {
             method: 'POST',

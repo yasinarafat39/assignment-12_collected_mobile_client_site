@@ -6,7 +6,7 @@ import SignIn from "../../componets/Pages/SignIn/SignIn"
 import SignUp from "../../componets/Pages/SignUp/SignUp"
 import ProductsByCategory from "../../componets/Pages/ProductsByCategory/ProductsByCategory";
 import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
-import Dashboard from "../../componets/Pages/Dashboard/Dashboard";
+import Dashboard from "../../componets/Pages/Dashboard/MyProfile";
 import DashboardLayout from "../../Layout/DashboardLayout";
 import MyOrders from "../../componets/Pages/Dashboard/MyOrders/MyOrders";
 import AddProduct from "../../componets/Pages/Dashboard/AddProduct/AddProduct";
@@ -14,6 +14,9 @@ import MyProducts from "../../componets/Pages/Dashboard/MyProducts/MyProducts";
 import AllSeller from "../../componets/Pages/Dashboard/AllSeller/AllSeller";
 import MakeAdmin from "../../componets/Pages/Dashboard/MakeAdmin/MakeAdmin";
 import AdminRoute from "../AdminRoute/AdminRoute";
+import MyProfile from "../../componets/Pages/Dashboard/MyProfile";
+import SellerRoute from "../SellerRoute/SellerRoute";
+import BlogsPage from "../../componets/Pages/Blogs/BlogsPage";
 
 
 export const router = createBrowserRouter([
@@ -38,6 +41,10 @@ export const router = createBrowserRouter([
                 path: '/category/:id',
                 element: <PrivateRoutes><ProductsByCategory></ProductsByCategory></PrivateRoutes>,
                 loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`)
+            },
+            {
+                path: '/blogs',
+                element: <BlogsPage></BlogsPage>
             }
         ]
     },
@@ -47,15 +54,19 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: '/dashboard',
+                element: <MyProfile></MyProfile>
+            },
+            {
+                path: '/dashboard/myorders',
                 element: <MyOrders></MyOrders>
             },
             {
                 path: '/dashboard/addproduct',
-                element: <AddProduct></AddProduct>
+                element: <SellerRoute><AddProduct></AddProduct></SellerRoute>
             },
             {
                 path: '/dashboard/myproducts',
-                element: <MyProducts></MyProducts>
+                element: <SellerRoute><MyProducts></MyProducts></SellerRoute>
             },
             {
                 path: '/dashboard/allseller',
@@ -64,7 +75,8 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboard/makeadmin',
                 element: <AdminRoute><MakeAdmin></MakeAdmin></AdminRoute>
-            }
+            },
+
         ]
     }
 ])

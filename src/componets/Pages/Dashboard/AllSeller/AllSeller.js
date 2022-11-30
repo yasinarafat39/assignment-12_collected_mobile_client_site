@@ -50,6 +50,31 @@ const AllSeller = () => {
     }
 
 
+    const handleDeleteSeller = (_id, name) => {
+
+        const proceed = window.confirm(`Are you sure? You want to delete ${name}`)
+
+        if (proceed) {
+            fetch(`http://localhost:5000/seller/${_id}`, {
+                method: 'DELETE',
+                headers: {
+                    'content-type': 'application/json'
+                },
+
+            })
+                .then(res => res.json())
+                .then(data => {
+
+                    if (data.deletedCount === 1) {
+                        toast.success('Delete Successfully.');
+                        refetch();
+                    }
+                })
+        }
+
+
+    }
+
     return (
         <div className='bg-gray-100 p-12'>
             <h2 className='text-3xl mb-3 '>All Seller</h2>
@@ -92,7 +117,7 @@ const AllSeller = () => {
                                             </button>
                                         </td>
                                         <td className=''>
-                                            <button className='btn btn-sm'>Delete</button>
+                                            <button onClick={() => handleDeleteSeller(seller._id, seller.name)} className='btn btn-sm'>Delete</button>
                                         </td>
                                     </tr>)
                                 }
