@@ -14,7 +14,7 @@ const Product = ({ product, setBookingProduct }) => {
     const { data: isVerified } = useQuery({
         queryKey: ['status'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/users/verified/${email}`);
+            const res = await fetch(` https://collected-mobile-server.vercel.app/users/verified/${email}`);
             const data = await res.json();
             return data;
         }

@@ -51,7 +51,7 @@ const AddProduct = () => {
                         salesStatus: "available"
                     }
 
-                    fetch('http://localhost:5000/products', {
+                    fetch(' https://collected-mobile-server.vercel.app/products', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'

@@ -13,7 +13,7 @@ const MyProfile = () => {
     const { data: userData = [], isLoading } = useQuery({
         queryKey: ['singleUser'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/user/${user?.email}`);
+            const res = await fetch(` https://collected-mobile-server.vercel.app/user/${user?.email}`);
             const data = await res.json();
             return data;
         }
@@ -23,7 +23,7 @@ const MyProfile = () => {
         return <Loading></Loading>
     }
 
-    const { email, name, role, _id } = userData;
+    const { email, name, role, status, _id } = userData;
 
     return (
         <div className='bg-gray-100 p-12 max-screen'>
@@ -52,7 +52,10 @@ const MyProfile = () => {
                                 userData?.status &&
                                 <span className='flex items-center'>
                                     <span className="text-gray-600">{userData?.status}</span>
-                                    <FaCheckCircle title='Verified' className='text-sky-400 ml-1' />
+                                    {
+                                        userData?.status &&
+                                            userData?.status === 'Verified' ? <FaCheckCircle title='Verified' className='text-sky-400 ml-1' /> : ''
+                                    }
                                 </span>
                             }
                         </div>

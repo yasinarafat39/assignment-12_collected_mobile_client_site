@@ -6,7 +6,6 @@ import SignIn from "../../componets/Pages/SignIn/SignIn"
 import SignUp from "../../componets/Pages/SignUp/SignUp"
 import ProductsByCategory from "../../componets/Pages/ProductsByCategory/ProductsByCategory";
 import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
-import Dashboard from "../../componets/Pages/Dashboard/MyProfile";
 import DashboardLayout from "../../Layout/DashboardLayout";
 import MyOrders from "../../componets/Pages/Dashboard/MyOrders/MyOrders";
 import AddProduct from "../../componets/Pages/Dashboard/AddProduct/AddProduct";
@@ -41,7 +40,7 @@ export const router = createBrowserRouter([
             {
                 path: '/category/:id',
                 element: <PrivateRoutes><ProductsByCategory></ProductsByCategory></PrivateRoutes>,
-                loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`)
+                loader: ({ params }) => fetch(` https://collected-mobile-server.vercel.app/category/${params.id}`)
             },
             {
                 path: '/blogs',
