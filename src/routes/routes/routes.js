@@ -17,6 +17,7 @@ import AdminRoute from "../AdminRoute/AdminRoute";
 import MyProfile from "../../componets/Pages/Dashboard/MyProfile";
 import SellerRoute from "../SellerRoute/SellerRoute";
 import BlogsPage from "../../componets/Pages/Blogs/BlogsPage";
+import AllBuyer from "../../componets/Pages/Dashboard/AllBuyer/AllBuyer";
 
 
 export const router = createBrowserRouter([
@@ -71,6 +72,10 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboard/allseller',
                 element: <AdminRoute><AllSeller></AllSeller></AdminRoute>
+            },
+            {
+                path: '/dashboard/allbuyer',
+                element: <AdminRoute><AllBuyer></AllBuyer></AdminRoute>
             },
             {
                 path: '/dashboard/makeadmin',

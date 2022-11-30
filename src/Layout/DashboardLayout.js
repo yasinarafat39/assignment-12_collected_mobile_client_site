@@ -39,6 +39,7 @@ const DashboardLayout = () => {
 
                         {
                             isAdmin && <>
+                                <li><NavLink className={({ isActive }) => isActive ? "bg-gray-500" : "bg-gray-50"} to="/dashboard/allbuyer">All Buyer</NavLink></li>
                                 <li><NavLink className={({ isActive }) => isActive ? "bg-gray-500" : "bg-gray-50"} to="/dashboard/allseller">All Seller</NavLink></li>
                                 <li><NavLink className={({ isActive }) => isActive ? "bg-gray-500" : "bg-gray-50"} to="/dashboard/makeadmin">Make Admin</NavLink></li>
                             </>
