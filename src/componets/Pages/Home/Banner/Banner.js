@@ -1,17 +1,40 @@
 import React from 'react';
-import banner from '../../../../assets/banner.jpg';
+import { Carousel } from 'react-responsive-carousel';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+
+import banner1 from '../../../../assets/banner/3072209.jpg';
+import banner2 from '../../../../assets/banner/3056065.jpg';
+import banner3 from '../../../../assets/banner/3003640.jpg';
+import banner4 from '../../../../assets/banner/3108307.jpg';
+
+import bannerCSS from './Banner.css';
 
 const Banner = () => {
     return (
-        <div className="hero h-[700px]" style={{ backgroundImage: `url(${banner})` }}>
-            <div className="hero-overlay bg-opacity-60"></div>
-            <div className="hero-content text-center text-neutral-content">
-                <div className="max-w-md">
-                    <h1 className="mb-5 text-5xl font-bold">Welcome to Collected Mobile.</h1>
-                    <p className="mb-5">This is Used Mobile Resale Market for Seller and Buyer who can Sell their used Mobile.</p>
+
+
+        <>
+            <Carousel showArrows={true} infiniteLoop autoPlay  >
+                <div>
+                    <img src={banner1} alt="" width="500px" height="200px" />
+
                 </div>
-            </div>
-        </div>
+                <div>
+                    <img src={banner2} alt="" width="500px" height="200px" />
+
+                </div>
+                <div>
+                    <img src={banner3} alt="" width="500px" height="200px" />
+
+                </div>
+                <div>
+                    <img src={banner4} alt="" width="500px" height="200px" />
+
+                </div>
+
+            </Carousel>
+        </>
+
     );
 };
 
