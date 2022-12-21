@@ -88,7 +88,7 @@ const SignUp = () => {
         const user = { name, email, role, status }
 
 
-        fetch(' https://collected-mobile-server.vercel.app/users', {
+        fetch(' http://localhost:5000/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -105,10 +105,14 @@ const SignUp = () => {
     return (
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col lg:flex-row-reverse">
+                
                 <div className="text-center lg:text-left">
                     <h1 className="text-5xl font-bold">Sign Up now!</h1>
                     <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
                 </div>
+
+
+
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                     <div className="card-body">
                         <form onSubmit={handleSubmit(handleSignUp)}>
@@ -144,7 +148,7 @@ const SignUp = () => {
                                 <label className="label">
                                     <span className="label-text">Profile Photo</span>
                                 </label>
-                                <input {...register("profilePhoto", { required: "Profile Photo is required" })} type="file" className="" />
+                                <input {...register("profilePhoto", { required: "Profile Photo is required" })} type="file" className="file-input file-input-bordered" />
                                 {errors.profilePhoto && <small className='text-red-400'>{errors.profilePhoto.message}</small>}
                             </div>
                             <div className="form-control mb-4">

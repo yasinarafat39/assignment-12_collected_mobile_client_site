@@ -13,7 +13,7 @@ const MyProfile = () => {
     const { data: userData = [], isLoading } = useQuery({
         queryKey: ['singleUser'],
         queryFn: async () => {
-            const res = await fetch(` https://collected-mobile-server.vercel.app/user/${user?.email}`);
+            const res = await fetch(` http://localhost:5000/user/${user?.email}`);
             const data = await res.json();
             return data;
         }

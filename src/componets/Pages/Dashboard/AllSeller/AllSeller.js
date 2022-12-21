@@ -14,7 +14,7 @@ const AllSeller = () => {
     const { data: sellers = [], isLoading, refetch } = useQuery({
         queryKey: ['sellers'],
         queryFn: async () => {
-            const res = await fetch(' https://collected-mobile-server.vercel.app/users/Seller', {
+            const res = await fetch(' http://localhost:5000/users/Seller', {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`
                 }
@@ -33,7 +33,7 @@ const AllSeller = () => {
         const proceed = window.confirm(`You want to Verify ${name}`);
 
         if (proceed) {
-            fetch(` https://collected-mobile-server.vercel.app/users/verify/${_id}`, {
+            fetch(` http://localhost:5000/users/verify/${_id}`, {
                 method: 'PUT',
                 headers: {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -55,7 +55,7 @@ const AllSeller = () => {
         const proceed = window.confirm(`Are you sure? You want to delete ${name}`)
 
         if (proceed) {
-            fetch(` https://collected-mobile-server.vercel.app/seller/${_id}`, {
+            fetch(` http://localhost:5000/seller/${_id}`, {
                 method: 'DELETE',
                 headers: {
                     'content-type': 'application/json'
