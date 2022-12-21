@@ -12,7 +12,7 @@ const OrderRow = ({ booking, refetch }) => {
         const proceed = window.confirm("Are you sure? You want to cancel your order.")
 
         if (proceed) {
-            fetch(` https://collected-mobile-server.vercel.app/booking/${_id}`, {
+            fetch(` http://localhost:5000/booking/${_id}`, {
                 method: 'DELETE',
                 headers: {
                     'content-type': 'application/json'

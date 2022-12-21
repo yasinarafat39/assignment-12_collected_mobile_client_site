@@ -1,13 +1,20 @@
 import React, { useContext } from 'react';
+import { useState } from 'react';
 import toast from 'react-hot-toast';
 import { FaFacebook, FaGoogle } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
+import useToken from '../../hooks/useToken';
 
 const SocialLogin = () => {
     const { googleLogin, facebookLogin } = useContext(AuthContext);
+    const [userEmail, setUserEmail] = useState('');
+    const [token] = useToken(userEmail);
     const navigate = useNavigate();
 
+    if (token) {
+        navigate('/')
+    }
 
     const role = 'Buyer';
     const status = 'unverified';
@@ -17,10 +24,11 @@ const SocialLogin = () => {
         googleLogin()
             .then(userCredential => {
                 const user = userCredential.user;
+                setUserEmail(user.email);
                 console.log(user);
                 saveUser(user.displayName, user.email, role);
                 toast.success("Login Success");
-                navigate('/');
+               
             })
             .catch(error => {
                 toast.error(error.message)
@@ -32,10 +40,11 @@ const SocialLogin = () => {
         facebookLogin()
             .then(userCredential => {
                 const user = userCredential.user;
+                setUserEmail(user.email);
                 console.log(user);
                 saveUser(user.displayName, user.email, role);
                 toast.success('Login Success');
-                navigate('/');
+                
             })
             .catch(error => {
                 toast.error(error.message)
@@ -46,7 +55,7 @@ const SocialLogin = () => {
 
         const user = { name, email, role, status }
 
-        fetch(' https://collected-mobile-server.vercel.app/users', {
+        fetch(' http://localhost:5000/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

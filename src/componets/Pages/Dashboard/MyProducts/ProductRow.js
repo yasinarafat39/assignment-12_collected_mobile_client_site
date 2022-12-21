@@ -12,7 +12,7 @@ const ProductRow = ({ product, refetch }) => {
         const proceed = window.confirm("Are you sure? You wand to delete your product.")
 
         if (proceed) {
-            fetch(` https://collected-mobile-server.vercel.app/product/${_id}`, {
+            fetch(` http://localhost:5000/product/${_id}`, {
                 method: 'DELETE',
                 headers: {
                     'content-type': 'application/json'
@@ -34,7 +34,7 @@ const ProductRow = ({ product, refetch }) => {
     const handleMakeAdvertise = () => {
 
         if (salesStatus === 'available') {
-            fetch(' https://collected-mobile-server.vercel.app/advertise', {
+            fetch(' http://localhost:5000/advertise', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

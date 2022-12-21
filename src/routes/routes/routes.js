@@ -40,7 +40,7 @@ export const router = createBrowserRouter([
             {
                 path: '/category/:id',
                 element: <PrivateRoutes><ProductsByCategory></ProductsByCategory></PrivateRoutes>,
-                loader: ({ params }) => fetch(`https://collected-mobile-server.vercel.app/category/${params.id}`)
+                loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`)
             },
             {
                 path: '/blogs',

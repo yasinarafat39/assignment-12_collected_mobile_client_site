@@ -20,7 +20,7 @@ const SignUp = () => {
     console.log(createdUserEmail);
     const [imgUrl, setImgUrl] = useState('');
 
-    const [token] = useToken(createdUserEmail)
+    const [token] = useToken(createdUserEmail);
     const navigate = useNavigate();
 
     if (token) {
@@ -90,7 +90,7 @@ const SignUp = () => {
         const user = { name, email, role, status }
 
 
-        fetch(' https://collected-mobile-server.vercel.app/users', {
+        fetch(' http://localhost:5000/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
